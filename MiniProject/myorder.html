@@ -1,0 +1,37 @@
+<!-- myorder.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include the same head content as the main page -->
+</head>
+<body>
+
+    <header>
+        <h1>My Order</h1>
+    </header>
+
+    <nav>
+        <!-- Include the same navigation content as the main page -->
+    </nav>
+
+    <div class="main-content">
+        <div id="order-list">
+            <!-- Selected items will be displayed here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const orderList = localStorage.getItem('orderList') ? JSON.parse(localStorage.getItem('orderList')) : [];
+            const orderListContainer = document.getElementById('order-list');
+            
+            orderList.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.innerHTML = `<p>${item.itemName} - $${item.price}</p>`;
+                orderListContainer.appendChild(orderItem);
+            });
+        }
+    </script>
+
+</body>
+</html>
